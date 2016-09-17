@@ -9,7 +9,7 @@
             <generator class="native" />
         </id>
         <property name="lastName" type="java.lang.String">
-            <column name="LASTNAME" />
+            <column name="LAST_NAME" />
         </property>
         <property name="email" type="java.lang.String">
             <column name="EMAIL" />
