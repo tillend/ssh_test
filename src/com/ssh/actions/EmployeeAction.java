@@ -74,8 +74,16 @@ ModelDriven<Employee>, Preparable{
 		return INPUT;
 	}
 	
+	public void prepareInput(){
+		if(id != null){
+			model = employeeService.get(id);
+		}
+	}
+	
 	public String save(){
-		model.setCreateTime(new Date());
+		if(id == null){
+			model.setCreateTime(new Date());			
+		}
 		employeeService.saveOrUpdate(model);
 		return SUCCESS;
 	}
@@ -96,7 +104,11 @@ ModelDriven<Employee>, Preparable{
 	}
 	
 	public void prepareSave(){
-		model = new Employee();
+		if(id == null){
+			model = new Employee();			
+		}else{
+			model = employeeService.get(id);
+		}
 	}
 
 	/**

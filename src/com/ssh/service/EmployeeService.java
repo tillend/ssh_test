@@ -29,4 +29,8 @@ public class EmployeeService {
 		employeeDao.delete(id);
 	}
 
+	public Employee get(Integer id) {
+		return employeeDao.get(id);
+	}
+
 }

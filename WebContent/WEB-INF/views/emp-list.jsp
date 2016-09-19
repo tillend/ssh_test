@@ -59,6 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>CREATETIME</td>
 				<td>DEPT</td>
 				<td>DELETE</td>
+				<td>EDIT</td>
 			</tr>
 			<s:iterator value="#request.employees">
 				<tr>
@@ -75,6 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>
 						<a class="delete" href="emp-delete?id=${id }">Delete</a>
 						<input type="hidden" value="${lastName }"/>
+					</td>
+					<td>
+						<a href="emp-input?id=${id }">Edit</a>
 					</td>
 				</tr>
 			</s:iterator>

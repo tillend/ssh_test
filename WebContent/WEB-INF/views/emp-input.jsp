@@ -53,7 +53,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<h4>Employee Input Page</h4>
 	
 	<s:form action="emp-save" method="post">
-		<s:textfield name="lastName" label="lastName"></s:textfield>
+		<s:if test="id != null">
+			<s:textfield name="lastName" label="LastName" disabled="true"></s:textfield>
+			<s:hidden name="id"></s:hidden>
+		</s:if>
+		<s:else>
+			<s:textfield name="lastName" label="LastName"></s:textfield>			
+		</s:else>
+		
 		<s:textfield name="email" label="Email"></s:textfield>
 		<s:textfield name="birth" label="Birth"></s:textfield>
 		
