@@ -24,6 +24,7 @@
 				<td>BIRTH</td>
 				<td>CREATETIME</td>
 				<td>DEPT</td>
+				<td>DELETE</td>
 			</tr>
 			<s:iterator value="#request.employees">
 				<tr>
@@ -33,7 +34,7 @@
 					<td>${birth }</td>
 					<td>${createTime }</td>
 					<td>${department.departmentName }</td>
-				
+					<td><a href="emp-delete?id=${id }">Delete</a></td>
 				</tr>
 			</s:iterator>
 			

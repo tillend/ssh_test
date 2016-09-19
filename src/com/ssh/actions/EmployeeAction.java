@@ -26,8 +26,22 @@ public class EmployeeAction extends ActionSupport implements RequestAware {
 		request.put("employees", employeeService.getAll());
 		return "list";
 	}
+	
+	
+	private Integer id;
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String delete(){
+		employeeService.delete(id);
+		return SUCCESS;
+	}
 
-
+	/**
+	 * «Î«Û”Ú
+	 */
 	private Map<String, Object> request;
 
 	@Override
