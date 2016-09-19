@@ -13,6 +13,14 @@ public class EmployeeService {
 		this.employeeDao = employeeDao;
 	}
 	
+	public boolean lastNameIsValid(String lastName){
+		return employeeDao.getEmployeeByLastName(lastName) == null;
+	}
+	
+	public void saveOrUpdate(Employee employee){
+		employeeDao.saveOrUpdate(employee);
+	}
+	
 	public List<Employee> getAll(){
 		return employeeDao.getAll();
 	}

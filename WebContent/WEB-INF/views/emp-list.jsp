@@ -65,8 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${id }</td>
 					<td>${lastName }</td>
 					<td>${email }</td>
-					<td>${birth }</td>
-					<td>${createTime }</td>
+					<td>
+						<s:date name="birth" format="yyyy-MM-dd"/>
+					</td>
+					<td>
+						<s:date name="createTime" format="yyyy-MM-dd hh:mm:ss"/>
+					</td>
 					<td>${department.departmentName }</td>
 					<td>
 						<a class="delete" href="emp-delete?id=${id }">Delete</a>

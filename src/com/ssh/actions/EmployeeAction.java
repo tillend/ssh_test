@@ -3,15 +3,20 @@ package com.ssh.actions;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
+import com.ssh.entities.Employee;
 import com.ssh.service.DepartmentService;
 import com.ssh.service.EmployeeService;
 
-public class EmployeeAction extends ActionSupport implements RequestAware {
+public class EmployeeAction extends ActionSupport implements RequestAware,
+ModelDriven<Employee>, Preparable{
 
 	/**
 	 * 
@@ -68,6 +73,31 @@ public class EmployeeAction extends ActionSupport implements RequestAware {
 		request.put("departments", departmentService.getAll());
 		return INPUT;
 	}
+	
+	public String save(){
+		model.setCreateTime(new Date());
+		employeeService.saveOrUpdate(model);
+		return SUCCESS;
+	}
+	
+	private String lastName;
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public String validateLastName() throws UnsupportedEncodingException{
+		if(employeeService.lastNameIsValid(lastName)){
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		}else{
+			inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+		}
+		return "ajax-success";
+	}
+	
+	public void prepareSave(){
+		model = new Employee();
+	}
 
 	/**
 	 * «Î«Û”Ú
@@ -78,6 +108,17 @@ public class EmployeeAction extends ActionSupport implements RequestAware {
 	public void setRequest(Map<String, Object> arg0) {
 		this.request = arg0;
 		
+	}
+
+
+	@Override
+	public void prepare() throws Exception {}
+
+	private Employee model;
+
+	@Override
+	public Employee getModel() {
+		return model;
 	}
 	
 	
