@@ -25,4 +25,5 @@
 		<property name="departmentService" ref="departmentService"></property>
 	</bean>
 
+	<bean id="exceptionHandler" class="com.ssh.exception.MyExceptionHandler"/>  
 </beans>

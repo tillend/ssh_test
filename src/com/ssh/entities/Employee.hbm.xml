@@ -6,7 +6,7 @@
     <class name="com.ssh.entities.Employee" table="SSH_EMPLOYEE">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
-            <generator class="native" />
+            <generator class="native"/>
         </id>
         <property name="lastName" type="java.lang.String">
             <column name="LAST_NAME" />
